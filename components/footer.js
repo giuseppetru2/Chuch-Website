@@ -1,5 +1,4 @@
 // import Link from 'next/link'
-import NewsletterForm from './newsletter-form'
 import SocialIcon from './social-icon'
 
 export default function Footer() {
