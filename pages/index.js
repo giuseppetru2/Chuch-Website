@@ -4,11 +4,9 @@ import useSWR from 'swr';
 import Layout from '../components/layout'
 import Jumbotron from '../components/jumbotron'
 import ShortText from '../components/short-text'
-import TwoUp from '../components/2-up'
 import TextAndImage from '../components/text-and-image'
-import Blog4Home from '../components/blog-4-home'
 
-import { getHomePageData, getPosts4Home } from '../lib/api'
+import { getHomePageData } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 
 const fetcher = async (url) => {
@@ -21,7 +19,7 @@ const fetcher = async (url) => {
   return data
 }
 
-export default function Index({ homeData, posts }) {
+export default function Index({ homeData }) {
   const { data, error } = useSWR(`/api/verse`, fetcher)
 
   return (
@@ -55,8 +53,7 @@ export default function Index({ homeData, posts }) {
 
 export async function getStaticProps() {
   const homeData = getHomePageData()
-  const posts = getPosts4Home()
   return {
-    props: { homeData, posts },
+    props: { homeData },
   }
 }
