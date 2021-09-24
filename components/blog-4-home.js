@@ -21,7 +21,7 @@ export default function Blog4Home({ posts }) {
           }
         </div>
         <div className="tc">
-          <Link href="/post">
+          <Link href="/events">
             <a className="btn raise">Read more</a>
           </Link>
         </div>

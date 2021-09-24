@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import useSWR from 'swr';
 
 import Layout from '../components/layout'
 import Jumbotron from '../components/jumbotron'
@@ -10,7 +11,18 @@ import Blog4Home from '../components/blog-4-home'
 import { getHomePageData, getPosts4Home } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 
+const fetcher = async (url) => {
+  const res = await fetch(url)
+  const data = await res.json()
+
+  if (res.status !== 200) {
+    throw new Error(data.message)
+  }
+  return data
+}
+
 export default function Index({ homeData, posts }) {
+  const { data, error } = useSWR(`/api/verse`, fetcher)
 
   return (
     <>
@@ -23,23 +35,18 @@ export default function Index({ homeData, posts }) {
           subtitle={homeData.subtitle}
           imageUrl={homeData.image}
         />
-        <ShortText 
-          heading={homeData.blurb.heading}
-          text={homeData.blurb.text}
-        />
-        <TwoUp 
-          intro={homeData.intro}
-          products={homeData.products}
-        />
+        {data && data.data && data.data[0] &&
+          <ShortText 
+          heading={data.data[0][0]}
+          text={data.data[0][1]}
+          />
+        }
         <TextAndImage 
           heading={homeData.values.heading}
           text={homeData.values.text}
           buttonText={homeData.values.buttonText}
           buttonLink={homeData.values.buttonLink}
           image={homeData.values.image}
-        />
-        <Blog4Home 
-          posts={posts}
         />
       </Layout>
     </>

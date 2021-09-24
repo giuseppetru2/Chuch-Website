@@ -1,21 +1,13 @@
 {
-  "logo": "/img/logo.svg",
+  "logo": "/img/logo.png",
   "menus": [
     {
-      "page": "Products",
-      "url": "/products"
+      "page": "Events",
+      "url": "/events"
     },
     {
-      "page": "Values",
-      "url": "/values"
-    },
-    {
-      "page": "Team",
-      "url": "/team"
-    },
-    {
-      "page": "Blog",
-      "url": "/post"
+      "page": "Donations",
+      "url": "#"
     },
     {
       "page": "Contact",

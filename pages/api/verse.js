@@ -11,7 +11,7 @@ export default async function (req, res) {
     const getRows = await googleSheetsInstance.spreadsheets.values.get({
         key: process.env.GOOGLE_SHEETS_KEY,
         spreadsheetId,
-        range: "Events",
+        range: "Verse",
     })
     
     res.status(200).json({data: getRows.data.values})
