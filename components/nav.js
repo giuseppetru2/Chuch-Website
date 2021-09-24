@@ -9,7 +9,7 @@ export default function Nav({logo}) {
   return (
     <nav 
       className={`${navStyle} on-${slug}`}>
-      <div class="center flex justify-between items-center w-100" style={{maxWidth:"1056px"}}>
+      <div className="center flex justify-between items-center w-100" style={{maxWidth:"1056px"}}>
         <a href="/" className="pa2 db mr2 h-100 w3 flex-none">
         <img src={logo} alt="Kaldi logo" className="br0 db mb0 w-100"/>
         </a>

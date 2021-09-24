@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <h3 className="f4 b lh-title mb2 primary">Social media</h3>
             <ul className="mhn2">
-              <SocialIcon link="#" iconPath="/img/icons-facebook.svg" />
+              <SocialIcon link="https://www.facebook.com/TriumphMinistryFM/" iconPath="/img/icons-facebook.svg" />
               <SocialIcon link="#" iconPath="/img/icons-twitter.svg" />
               <SocialIcon link="#" iconPath="/img/icons-instagram.svg" />
               <SocialIcon link="#" iconPath="/img/icons-vimeo.svg" />
