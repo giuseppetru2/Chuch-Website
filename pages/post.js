@@ -3,10 +3,21 @@ import Head from 'next/head'
 import Layout from '../components/layout'
 import Jumbotron from '../components/jumbotron'
 import PostBlock from '../components/post-block'
-import { getAllPosts,  } from '../lib/api'
+import useSWR from 'swr';
 import { CMS_NAME } from '../lib/constants'
 
-export default function Blog({posts}) {
+const fetcher = async (url) => {
+  const res = await fetch(url)
+  const data = await res.json()
+
+  if (res.status !== 200) {
+    throw new Error(data.message)
+  }
+  return data
+}
+
+export default function Blog() {
+  const { data, error } = useSWR(`/api/events`, fetcher)
 
   return (
     <>
@@ -21,14 +32,13 @@ export default function Blog({posts}) {
         />
         <div className="mw9 center">
           <ul className="flex-ns flex-wrap mhn1-ns pa5-m justify-center">
-          {
-            posts.map(p => (
-              <div key={p.title} className="flex w-30-l w-50-m ph2-ns pv2-ns ">
+          {data && data.data &&
+            data.data.map(item => (
+              <div key={item[1]} className="flex w-30-l w-50-m ph2-ns pv2-ns ">
                 <PostBlock 
-                  title={p.title}
-                  description={p.description}
-                  date={p.date}
-                  slug={p.slug}
+                  title={item[1]}
+                  description={item[2]}
+                  date={item[0]}
                 />
               </div>
             ))
@@ -38,11 +48,4 @@ export default function Blog({posts}) {
       </Layout>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const posts = getAllPosts()
-  return {
-    props: { posts },
-  }
 }

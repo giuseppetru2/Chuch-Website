@@ -10,15 +10,16 @@
   "dependencies": {
     "classnames": "2.2.6",
     "date-fns": "2.16.1",
-    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "googleapis": "^87.0.0",
     "gray-matter": "4.0.2",
     "next": "latest",
     "nodemailer": "^6.6.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "remark": "13.0.0",
-    "remark-html": "13.0.1"
+    "remark-html": "13.0.1",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
