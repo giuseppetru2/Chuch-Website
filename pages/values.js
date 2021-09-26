@@ -2,7 +2,6 @@ import Head from 'next/head'
 
 import Layout from '../components/layout'
 import Jumbotron from '../components/jumbotron'
-import MediaBlock from '../components/media-block'
 import { getPageData, } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 
