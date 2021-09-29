@@ -1,6 +1,7 @@
 
 export default function (req, res) {
   let nodemailer = require('nodemailer')
+  require("dotenv").config();
   
   const transporter = nodemailer.createTransport({
       port: 465,
